@@ -11,6 +11,9 @@ function html () {
 
 function css () {
   return gulp.src('_site/**/*.css')
+    .pipe(purgecss({
+      content: ['_site/**/*.html']
+    }))
     .pipe(prefix())
     .pipe(cleanCSS())
     .pipe(gulp.dest('_site'));
